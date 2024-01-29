@@ -18,6 +18,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void batch(List<Student> studentList) {
+        studentDao.batch(studentList);
+    }
+
+    @Override
     public List<Student> getStudents() {
         return studentDao.getStudents();
     }

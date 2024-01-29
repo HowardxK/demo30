@@ -18,9 +18,6 @@ import java.util.Map;
 public class StudentController {
 
     @Autowired
-    private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
-
-    @Autowired
     private StudentService studentService;
 
     @PostMapping("/students")
@@ -32,18 +29,6 @@ public class StudentController {
 
     @PostMapping("/students/batch")
     public String insertList(@RequestBody List<Student> studentList) {
-        String sql = "INSERT INTO student (name) VALUES (:studentName)";
-
-        MapSqlParameterSource[] parameterSources = new MapSqlParameterSource[studentList.size()];
-
-        for (int i = 0; i < studentList.size(); i++) {
-            Student student = studentList.get(i);
-
-            parameterSources[i] = new MapSqlParameterSource();
-            parameterSources[i].addValue("studentName", student.getName());
-        }
-
-        namedParameterJdbcTemplate.batchUpdate(sql, parameterSources);
 
         return "執行一批 INSERT sql";
     }

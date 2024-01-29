@@ -42,6 +42,22 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public void batch(List<Student> studentList) {
+        String sql = "INSERT INTO student (name) VALUES (:studentName)";
+
+        MapSqlParameterSource[] parameterSources = new MapSqlParameterSource[studentList.size()];
+
+        for (int i = 0; i < studentList.size(); i++) {
+            Student student = studentList.get(i);
+
+            parameterSources[i] = new MapSqlParameterSource();
+            parameterSources[i].addValue("studentName", student.getName());
+        }
+
+        namedParameterJdbcTemplate.batchUpdate(sql, parameterSources);
+    }
+
+    @Override
     public List<Student> getStudents() {
         String sql = "SELECT id, name FROM student";
 

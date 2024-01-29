@@ -29,6 +29,7 @@ public class StudentController {
 
     @PostMapping("/students/batch")
     public String insertList(@RequestBody List<Student> studentList) {
+        studentService.batch(studentList);
 
         return "執行一批 INSERT sql";
     }

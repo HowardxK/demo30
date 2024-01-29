@@ -83,15 +83,7 @@ public class StudentController {
     }
 
     @GetMapping("/students/{studentId}")
-    public Student selectByid(@PathVariable Integer studentId) {
-        String countSql = "SELECT count(*) FROM student";
-
-        Map<String, Object> countMap = new HashMap<>();
-
-        Integer count = namedParameterJdbcTemplate.queryForObject(countSql, countMap, Integer.class);
-
-        System.out.println("總數：" + count);
-
+    public Student selectById(@PathVariable Integer studentId) {
         return studentService.getById(studentId);
     }
 }

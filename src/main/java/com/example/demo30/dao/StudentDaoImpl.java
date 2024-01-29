@@ -42,6 +42,17 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public List<Student> getStudents() {
+        String sql = "SELECT id, name FROM student";
+
+        Map<String, Object> map = new HashMap<>();
+
+        List<Student> list = namedParameterJdbcTemplate.query(sql, map, new StudentRowMapper());
+
+        return list;
+    }
+
+    @Override
     public Student getById(Integer studentId) {
         String sql = "SELECT id, name FROM student WHERE id = :studentId";
 

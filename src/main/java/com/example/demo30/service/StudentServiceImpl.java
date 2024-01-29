@@ -5,6 +5,8 @@ import com.example.demo30.dao.StudentDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public class StudentServiceImpl implements StudentService {
     @Autowired
@@ -13,6 +15,11 @@ public class StudentServiceImpl implements StudentService {
     @Override
     public void insert(Student student) {
         studentDao.insert(student);
+    }
+
+    @Override
+    public List<Student> getStudents() {
+        return studentDao.getStudents();
     }
 
     @Override

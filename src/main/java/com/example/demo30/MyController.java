@@ -7,13 +7,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class MyController {
-    @Autowired
-    @Qualifier( "hpPrinter")
-    private Printer printer;
+    @RequestMapping ("/breakfast")
+    public String breakfast() {
+        return "漢堡和紅茶";
+    }
 
-    @RequestMapping("/test")
-    public String test() {
-        printer.print("Hello World");
-        return "Hello World";
+    @RequestMapping ("/name")
+    public String name() {
+        return "howard";
     }
 }

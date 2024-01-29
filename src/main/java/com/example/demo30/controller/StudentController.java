@@ -25,18 +25,7 @@ public class StudentController {
 
     @PostMapping("/students")
     public String insert(@RequestBody Student student) {
-        String sql = "INSERT INTO student(name) VALUES (:studentName)";
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("studentName", student.getName());
-
-        KeyHolder keyHolder = new GeneratedKeyHolder();
-
-        namedParameterJdbcTemplate.update(sql, new MapSqlParameterSource(map), keyHolder);
-
-        int id = keyHolder.getKey().intValue();
-
-        System.out.println("mysql 自動生成的 id 為：" + id);
+        studentService.insert(student);
 
         return "執行 INSERT sql";
     }

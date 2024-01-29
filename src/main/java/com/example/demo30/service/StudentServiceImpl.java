@@ -9,6 +9,12 @@ import org.springframework.stereotype.Component;
 public class StudentServiceImpl implements StudentService {
     @Autowired
     private StudentDao studentDao;
+
+    @Override
+    public void insert(Student student) {
+        studentDao.insert(student);
+    }
+
     @Override
     public Student getById(Integer studentId) {
         return studentDao.getById(studentId);

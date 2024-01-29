@@ -16,6 +16,11 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
+    public void deleteById(Integer studentId) {
+        studentDao.deleteById(studentId);
+    }
+
+    @Override
     public Student getById(Integer studentId) {
         return studentDao.getById(studentId);
     }

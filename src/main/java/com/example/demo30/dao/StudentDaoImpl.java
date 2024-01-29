@@ -32,6 +32,16 @@ public class StudentDaoImpl implements StudentDao {
     }
 
     @Override
+    public void deleteById(Integer studentId) {
+        String sql = "DELETE FROM student WHERE id = :studentId";
+
+        Map<String, Object> map = new HashMap<>();
+        map.put("studentId", studentId);
+
+        namedParameterJdbcTemplate.update(sql, map);
+    }
+
+    @Override
     public Student getById(Integer studentId) {
         String sql = "SELECT id, name FROM student WHERE id = :studentId";
 

@@ -50,12 +50,7 @@ public class StudentController {
 
     @DeleteMapping("/students/{studentId}")
     public String delete(@PathVariable Integer studentId) {
-        String sql = "DELETE FROM student WHERE id = :studentId";
-
-        Map<String, Object> map = new HashMap<>();
-        map.put("studentId", studentId);
-
-        namedParameterJdbcTemplate.update(sql, map);
+        studentService.deleteById(studentId);
 
         return "執行 DELETE sql";
     }

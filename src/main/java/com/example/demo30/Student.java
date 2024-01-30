@@ -1,7 +1,16 @@
-package com.example.demo30.model;
+package com.example.demo30;
 
+import jakarta.persistence.*;
+
+@Entity
+@Table(name = "student")
 public class Student {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     Integer id;
+
+    @Column(name = "name")
     String name;
 
     public Integer getId() {
